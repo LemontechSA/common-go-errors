@@ -2,6 +2,7 @@ package errs
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 )
 
@@ -94,6 +95,9 @@ func NewErrorWrapper(
 	err error,
 	payload map[string]string,
 ) error {
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
@@ -110,10 +114,14 @@ func NewBadRequestError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusBadRequest
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusBadRequest,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -126,10 +134,14 @@ func NewUnauthorizedError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusUnauthorized
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusUnauthorized,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -142,10 +154,14 @@ func NewPaymentRequiredError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusPaymentRequired
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusPaymentRequired,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -158,10 +174,14 @@ func NewForbiddenError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusForbidden
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusForbidden,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -174,10 +194,14 @@ func NewNotFoundError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusNotFound
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusNotFound,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -190,10 +214,14 @@ func NewUnprocessableEntityError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusUnprocessableEntity
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusUnprocessableEntity,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -206,10 +234,14 @@ func NewInternalServerError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusInternalServerError
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusInternalServerError,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -222,10 +254,14 @@ func NewNotImplementedError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusNotImplemented
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusNotImplemented,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -238,10 +274,14 @@ func NewBadGatewayError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusBadGateway
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusBadGateway,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -254,10 +294,14 @@ func NewServiceUnavailableError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusServiceUnavailable
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusServiceUnavailable,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
@@ -270,10 +314,14 @@ func NewGatewayTimeoutError(
 	err error,
 	payload map[string]string,
 ) error {
+	code := http.StatusGatewayTimeout
+	payload["code"] = fmt.Sprint(code)
+	payload["human_message"] = message
+
 	return ErrorWrapper{
 		Action:  action,
 		Message: message,
-		Code:    http.StatusGatewayTimeout,
+		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
