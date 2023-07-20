@@ -95,16 +95,20 @@ func NewErrorWrapper(
 	err error,
 	payload map[string]string,
 ) error {
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Bad Request - Http code 400
@@ -115,16 +119,20 @@ func NewBadRequestError(
 	payload map[string]string,
 ) error {
 	code := http.StatusBadRequest
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Unauthorized - Http code 401
@@ -135,16 +143,20 @@ func NewUnauthorizedError(
 	payload map[string]string,
 ) error {
 	code := http.StatusUnauthorized
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Payment Required - Http code 402
@@ -155,16 +167,20 @@ func NewPaymentRequiredError(
 	payload map[string]string,
 ) error {
 	code := http.StatusPaymentRequired
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Forbidden - Http code 403
@@ -175,16 +191,20 @@ func NewForbiddenError(
 	payload map[string]string,
 ) error {
 	code := http.StatusForbidden
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Not Found - Http code 404
@@ -195,16 +215,20 @@ func NewNotFoundError(
 	payload map[string]string,
 ) error {
 	code := http.StatusNotFound
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Unprocessable Entity - Http code 422
@@ -215,16 +239,20 @@ func NewUnprocessableEntityError(
 	payload map[string]string,
 ) error {
 	code := http.StatusUnprocessableEntity
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Internal Server Error - Http code 500
@@ -235,16 +263,20 @@ func NewInternalServerError(
 	payload map[string]string,
 ) error {
 	code := http.StatusInternalServerError
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Not Implemented - Http code 501
@@ -255,16 +287,20 @@ func NewNotImplementedError(
 	payload map[string]string,
 ) error {
 	code := http.StatusNotImplemented
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Bad Gateway - Http code 502
@@ -275,16 +311,20 @@ func NewBadGatewayError(
 	payload map[string]string,
 ) error {
 	code := http.StatusBadGateway
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Service Unavailable - Http code 503
@@ -295,16 +335,20 @@ func NewServiceUnavailableError(
 	payload map[string]string,
 ) error {
 	code := http.StatusServiceUnavailable
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
 
 // Returns a wrapped error of type Gateway Timeout - Http code 504
@@ -315,14 +359,18 @@ func NewGatewayTimeoutError(
 	payload map[string]string,
 ) error {
 	code := http.StatusGatewayTimeout
-	payload["code"] = fmt.Sprint(code)
-	payload["human_message"] = message
-
-	return ErrorWrapper{
+	ew := ErrorWrapper{
 		Action:  action,
 		Message: message,
 		Code:    code,
 		Err:     err,
 		Payload: payload,
 	}
+
+	ew.AddPayloadValues(map[string]string{
+		"code":          fmt.Sprint(code),
+		"human_message": message,
+	})
+
+	return ew
 }
