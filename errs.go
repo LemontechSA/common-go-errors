@@ -80,7 +80,7 @@ func DecodeError(err error) ErrorWrapper {
 
 	return ErrorWrapper{
 		Action:  "generic",
-		Message: err.Error(),
+		Message: "Internal Server Error",
 		Code:    http.StatusInternalServerError,
 		Err:     err,
 		Payload: nil,
